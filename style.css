@@ -1,0 +1,35 @@
+/* public/style.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="file"] {
+    margin: 15px 0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #5a67d8;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #4c51bf;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload a File</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <!-- Accept multiple file types and allow multiple files to be uploaded -->
+            <input type="file" name="files" accept="image/*,application/pdf,audio/*" multiple required>
+            <button type="submit">Upload</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script>
+        document.getElementById('uploadForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const message = document.getElementById('message');
+            if (response.ok) {
+                message.textContent = 'Files uploaded successfully!';
+                e.target.reset();
+            } else {
+                message.textContent = 'Failed to upload files.';
+            }
+        };
+    </script>
+</body>
+</html>
