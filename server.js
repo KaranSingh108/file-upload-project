@@ -28,8 +28,13 @@ const fileFilter = (req, file, cb) => {
 // Set up multer to use the storage and fileFilter options
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-// Serve static files from the public folder
-app.use(express.static('public'));
+// Serve static files from a "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Root route to handle the base URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the File Upload Project!');
+});
 
 // Endpoint for uploading multiple files
 app.post('/upload', upload.array('files', 10), (req, res) => {
