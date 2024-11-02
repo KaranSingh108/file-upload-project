@@ -28,8 +28,12 @@ const fileFilter = (req, file, cb) => {
 // Set up multer to use the storage and fileFilter options
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-// Serve static files from a "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Sconst path = require('path');
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 
 // Root route to handle the base URL
 app.get('/', (req, res) => {
